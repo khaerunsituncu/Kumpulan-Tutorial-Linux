@@ -1,0 +1,35 @@
+# INSTALL ZSH
+sudo pacman -S zsh
+which zsh
+chsh -s alamat zsh atau chsh -s $(switch zsh)
+
+# INSTALL OH-MY-ZSH
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+nano ./zsh
+
+# INSTALL POWERLINE
+sudo pacman -S python-pip
+sudo pip install powerline-status
+git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts
+./install.sh
+cd ..
+rm -rf fonts
+
+# INSTALL THEMES POWERLEVEL9K
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k\
+nano .zshrc
+
+# INSTALL THEMES SPACESHIP
+git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+
+# INSTALL PLUGIN ZSH-AUTOSUGGESTIONS
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# INSTALL PLUGIN ZSH-SYNTAX-HIGHLIGHTING
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+3 INSTALL PLUGIN FAST-SYNTAX-HIGHLIGHTING
+git clone https://github.com/zdharma/fast-syntax-highlighting.git \\
+  ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting

@@ -1,0 +1,16 @@
+# Cara install spotify di manjaro KDE
+sudo pacman -S pacaur
+pacaur -S spotify
+
+# Cara install Font Windows
+pacaur -S ttf-ms-fonts
+
+# Cara install Sublime
+lihat di web resmi. note apabila repository bermasalah berarti repo nya doble
+kate /etc/pacman.conf
+
+# Global menu inkscape, sublime text dll
+sudo pacman -S appmenu-gtk-module
+
+# DOWNGRADE 
+DOWNGRADE_FROM_ALA=1 downgrade konsole

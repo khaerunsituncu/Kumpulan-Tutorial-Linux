@@ -1,0 +1,35 @@
+	<!-- .container>(.header>ul.nav>li*4>a{Link $})+(.main>h2{judul artikel}+p>lorem20) -->
+	<!-- documentasi emmet -->
+	<!-- .namaclass membuat tag class, -->
+	<!-- #namaid membuat tag id -->
+	<!-- + mensejajarkan tag -->
+	<!-- () gruping -->
+	<!-- * jumlah tag -->
+	<!-- > memasukkan tag -->
+	<!-- $ angka berurutan -->
+	<!-- {} memasukkan kata/string -->
+	<!-- lorem100  membuat kata otomatis 100 kata, angkanya bisa di ganti-->
+
+	<!-- .container>(.header>ul.nav>li*4>a{link $})+(.main>h1{judul artikel}>p>lorem20) -->
+
+<!-- 
+Setting Padding top down
+------------------------
+Preferences -> Setting 
+tambahkan 
+"line_padding_bottom": 4,
+"line_padding_top": 4,
+ -->
+
+<!-- 
+Ctrl + D Selek kata
+Ctrl + U untuk unselect
+alt + f3
+Ctrl + Shift + D duplikat line
+Ctrl + Shift + k delete line
+Ctrl + Shift + Up/Down kegeser baris
+div.namaclas/div#namaid
+tab / shift+tab geser kanan kiri
+Ctrl + L select line 
+Ctrl + +/- memperbesar ukuran font
+-->

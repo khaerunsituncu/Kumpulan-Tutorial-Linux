@@ -1,0 +1,2 @@
+Buat bootable di Terminal
+dd if=/home/khaerun/.iso of=/dev/sdb bs=1M && sync

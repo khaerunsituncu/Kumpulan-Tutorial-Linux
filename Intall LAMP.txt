@@ -1,0 +1,155 @@
+#Apache
+#Menginstall apache
+sudo apt install apache2
+
+#Lihat Status apache
+sudo systemctl status apache2
+
+#restart apache
+sudo systemctl restart apache2
+
+#Stop apache
+sudo systemctl stop apache2
+
+#Start apache
+sudo systemctl start apache2
+
+--------
+Untuk mengizinkan akses http / https
+--------
+sudo ufw app list // list ada Apache (http), Apache Full(http dan https), Apache Secure (https) 
+sudo ufw app info "Apache Full"
+sudo ufw allow in "Apache Full"   ||   sudo ufw allow in "Apache"
+--------
+
+#PHP
+#install PHP dan ekstensinya
+sudo apt install php php-cli php-gd php-mbstring php-xml php-mysql php-zip libapache2-mod-php
+
+#Tes Php
+sudo nano /var/www/html/info.php (localhost/info.php)
+
+
+#MariaDB
+#Install MariaDB
+sudo apt install mariadb-client mariadb-server
+
+#Lihat Status mysql, ganti status -> (restart, stop atau start)
+sudo systemctl status mysql
+
+#Men-set root password, agar mariadb dapat di gunakan user root
+sudo mysql_secure_installation
+
+#Masuk ke mariadb
+sudo mysql -u root -p
+
+-----
+agar dapat di akses user di luar root
+-----
+use mysql
+update user set plugin="" where User='root';
+flush privileges;
+quit
+-----
+
+#Install phpmyadmin
+sudo apt install phpmyadmin
+
+#Configurasi phpmyadmin ke apache2
+sudo nano /etc/apache2/apache2.conf
+-----
+Tambahkan
+-----
+# phpMyAdmin Configuration
+Include /etc/phpmyadmin/apache.conf
+-----
+sudo systemctl restart apache2
+
+
+Sumber : 
+http://karaengcomputer.com/cara-install-lamp-pada-ubuntu-18-04
+www.ostechnix.com/install-apache-mariadb-php-lamp-stack-ubuntu-16-04
+medium.com/hammercode
+
+
+
+/* Manjaro KDE */
+# install apache
+sudo pacman -S apache
+
+nano /etc/httpd/conf/httpd.conf
+[...]
+#LoadModule unique_id_module modules/mod_unique_id.so
+[...]
+
+sudo systemctl enable httpd
+sudo systemctl restart httpd
+sudo systemctl status httpd
+
+# alamat Server
+/srv/http/
+
+# install MariaDB
+sudo pacman -S mysql
+
+# Anda perlu menginisialisasi direktori data MariaDB sebelum memulai layanan. Untuk melakukannya, jalankan:
+sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql/
+
+sudo systemctl enable mysqld
+sudo systemctl start mysqld
+sudo systemctl status mysqld
+
+# Setup MySQL/MariaDB root user password
+mysql_secure_installation
+
+# Install PHP 
+sudo pacman -S php php-apache
+
+nano /etc/httpd/conf/httpd.conf
+[...]
+#LoadModule mpm_event_module modules/mod_mpm_event.so
+[...]
+
+#ADD /etc/httpd/conf/httpd.conf
+[...]
+LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
+LoadModule php7_module modules/libphp7.so
+AddHandler php7-script php
+Include conf/extra/php7_module.conf
+
+# Install phpmyadmin
+sudo pacman -S phpmyadmin
+nano /etc/php/php.ini [enable bz2.so and mysqli.so]
+
+nano /etc/httpd/conf/extra/phpmyadmin.conf
+/* isi */
+/*
+Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
+ <Directory "/usr/share/webapps/phpMyAdmin">
+  DirectoryIndex index.php
+  AllowOverride All
+  Options FollowSymlinks
+  Require all granted
+ </Directory>
+*/
+
+nano /etc/httpd/conf/httpd.conf
+/* Tambahkan di bagian bawah*/
+/*
+Include conf/extra/phpmyadmin.conf
+*/
+
+//bila ada error blowfish
+nano /etc/webapps/phpmyadmin/config.inc.php
+
+//temp error
+//folder harus akses 777
+buat folder /usr/share/phpmyadmin/temp
+
+nano /etc/webapps/phpmyadmin/config.inc.php
+
+$cfg['TempDir'] = '/usr/share/phpmyadmin/temp';
+
+
+Sumber:
+https://www.ostechnix.com/install-apache-mariadb-php-lamp-stack-on-arch-linux-2016/
